@@ -25,6 +25,7 @@ serialPort.on("open", function(){
 
 			buffer = Buffer.concat( [buffer, data] );
 			
+			// if a newline is found, broadcast the data
 			if( buffer.toString().match(/\n/) ) {
 				console.log( "length " + buffer.length );
 				socket.broadcast.emit('data', buffer.toString());
